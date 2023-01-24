@@ -61,6 +61,11 @@ function App() {
     setEditId(id);
     setName(specificItem.title)
   }
+  const clearList = ()=>{
+    showAlert(true, 'danger', 'empty list')
+    setList([])
+    
+  }
 
   return (
     <section>
@@ -78,7 +83,7 @@ function App() {
         {list.length > 0 && (
           <div>
             <List items={list} removeItem={removeItem} editItem={editItem}/>
-            <button>
+            <button onClick={clearList}>
               Clear Items
             </button>
           </div>
