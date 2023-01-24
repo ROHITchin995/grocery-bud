@@ -10,12 +10,12 @@ export const List = ({ items, removeItem, editItem }) => {
         const { id, title } = items;
         return (
           <article className='grocery_item' key={id}>
-            <p>{title}</p>
+            <p className='title'>{title}</p>
             <div>
-              <button onClick={()=> editItem(id)}>
+              <button className='edit_button' onClick={()=> editItem(id)}>
                 <FaEdit />
               </button>
-              <button onClick={()=> removeItem(id)}>
+              <button className='delete_button' onClick={()=> removeItem(id)}>
                 <FaTrash />
               </button>
             </div>

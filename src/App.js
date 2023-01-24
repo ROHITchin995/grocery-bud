@@ -84,7 +84,7 @@ function App() {
         {list.length > 0 && (
           <div className='grocery_container'>
             <List items={list} removeItem={removeItem} editItem={editItem}/>
-            <button onClick={clearList}>
+            <button className='clear_button' onClick={clearList}>
               Clear Items
             </button>
           </div>
