@@ -2,8 +2,26 @@ import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
 
-export const List = (items, ) => {
+export const List = ({ items, removeItem, editItem }) => {
+
   return (
-    <div>List</div>
+    <div>
+      {items.map((items) => {
+        const { id, title } = items;
+        return (
+          <article key={id}>
+            <p>{title}</p>
+            <div>
+              <button onClick={()=> editItem(id)}>
+                <FaEdit />
+              </button>
+              <button onClick={()=> removeItem(id)}>
+                <FaTrash />
+              </button>
+            </div>
+          </article>
+        )
+      })}
+    </div>
   )
 }
