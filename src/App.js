@@ -68,20 +68,21 @@ function App() {
   }
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
+    <main>
+    <section className='section_center'>
+      <form className='grocery_form' onSubmit={handleSubmit}>
         {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
         <h3>Grocery Bud</h3>
-        <div>
-          <input type="text" value={name} placeholder="e.g. Vegetables" onChange={(e) => setName(e.target.value)} />
-          <button type="submit">
+        <div className='form_control'>
+          <input className='grocery_input' type="text" value={name} placeholder="e.g. Vegetables" onChange={(e) => setName(e.target.value)} />
+          <button className='submit_button' type="submit">
             {isEditing ? 'Edit' : 'Submit'}
           </button>
         </div>
       </form>
       <div>
         {list.length > 0 && (
-          <div>
+          <div className='grocery_container'>
             <List items={list} removeItem={removeItem} editItem={editItem}/>
             <button onClick={clearList}>
               Clear Items
@@ -91,6 +92,7 @@ function App() {
 
       </div>
     </section>
+    </main>
   );
 }
 

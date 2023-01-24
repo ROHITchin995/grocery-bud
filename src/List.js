@@ -9,7 +9,7 @@ export const List = ({ items, removeItem, editItem }) => {
       {items.map((items) => {
         const { id, title } = items;
         return (
-          <article key={id}>
+          <article className='grocery_item' key={id}>
             <p>{title}</p>
             <div>
               <button onClick={()=> editItem(id)}>
