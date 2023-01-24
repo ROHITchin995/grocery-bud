@@ -1,24 +1,49 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
+import { List } from './List';
+
+const getLocalStorage = ()=>{
+  let list = localStorage.getItem('list');
+  if(list){
+    return (list = JSON.parse(localStorage.getItem('list')))
+  }else{
+    return []
+  }
+}
 
 function App() {
+  const [isEditing, setIsEditing] = useState(false)
+  const [name, setName] = useState('')
+  const [list, setList] = useState(getLocalStorage());
+
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list));    
+  }, [list])
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section>
+      <form>
+        <h3>Grocery Bud</h3>
+        <div>
+          <input type="text" value={name} placeholder="e.g. Vegetables" onChange={(e)=>setName(e.target.value)}/>
+          <button type="submit">
+            {isEditing?'Edit':'Submit'}
+          </button>
+        </div>
+      </form>
+      <div>
+        {list.length > 0 && (
+          <div>
+            <List items={list}/>
+          <button>
+          Clear Items
+        </button>
+        </div>
+        )}
+        
+      </div>
+    </section>
   );
 }
 
